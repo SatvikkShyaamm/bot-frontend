@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import api from '../utils/api';
+import { useAuth } from '../context/AuthContext';
 import './Simulation.css';
 
 const DIFFICULTY_COLOR = { easy: '#00ff88', medium: '#ffd700', hard: '#ff2d55' };
@@ -100,6 +101,7 @@ function ClaudeAnalysis({ analysis, loading }) {
 
 export default function Simulation() {
   const { levelId, taskId } = useParams();
+  const { refreshUser } = useAuth();
   const navigate = useNavigate();
   const [scenario, setScenario] = useState(null);
   const [taskMeta, setTaskMeta] = useState(null);
@@ -177,6 +179,7 @@ export default function Simulation() {
       const data = res.data;
       setResult(data);
       setRiskMeter(data.riskMeter ?? riskMeter);
+      await refreshUser();
 
       if (attemptsLeft > 0) {
         setAttemptsLeft(prev => data.result === 'correct' ? prev : Math.max(0, prev - 1));
