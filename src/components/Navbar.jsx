@@ -104,8 +104,14 @@ export default function Navbar({ progress }) {
   }, []);
 
   const handleLogout = async () => {
-    await logout();
-    navigate('/login');
+    try {
+      await logout();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      navigate('/login', { replace: true });
+      window.location.href = '/login';
+    }
   };
 
   return (

@@ -180,7 +180,9 @@ export default function Arena() {
   useEffect(() => {
     api.get('/progress')
       .then(res => setProgress(res.data.progress))
-      .catch(() => {})
+      .catch((err) => {
+        console.error('Progress fetch failed:', err);
+      })
       .finally(() => setLoading(false));
   }, []);
 
