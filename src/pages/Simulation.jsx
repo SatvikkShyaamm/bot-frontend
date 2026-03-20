@@ -163,7 +163,8 @@ export default function Simulation() {
   };
 
   useEffect(() => {
-    if (scenario) {
+    if (scenario && scenario.title) {
+      console.log('Fetching Claude analysis for:', scenario.title);
       fetchClaudeAnalysis(scenario);
     }
   }, [scenario]);
