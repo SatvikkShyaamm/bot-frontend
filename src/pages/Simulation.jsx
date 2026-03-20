@@ -109,7 +109,7 @@ export default function Simulation() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState(null); // { result, xpDelta, feedback, ... }
-  const [claudeAnalysis, setClaudeAnalysis] = useState('');
+  const [claudeAnalysis, setClaudeAnalysis] = useState('Threat analysis will be available after you perform an action.');
   const [claudeLoading, setClaudeLoading] = useState(false);
   const [showBreach, setShowBreach] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
