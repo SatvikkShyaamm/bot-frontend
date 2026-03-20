@@ -169,3 +169,78 @@ body {
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
+
+/* ── MOBILE RESPONSIVE ───────────────────────── */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 0 0.75rem;
+    height: 56px;
+  }
+  .navbar-center { display: none; }
+  .user-icon-info { display: none; }
+  .user-icon-btn { padding: 0.4rem; }
+
+  /* Arena map */
+  .arena-map {
+    height: calc(100vh - 160px);
+  }
+  .arena-title {
+    font-size: 1.2rem;
+  }
+  .arena-header {
+    padding: 1.5rem 1rem 0;
+  }
+
+  /* Level nodes - scale down on mobile */
+  .level-node {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+  .node-tooltip { display: none; }
+
+  /* Level map */
+  .levelmap-map {
+    height: calc(100vh - 220px);
+  }
+  .task-node {
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+  .task-tooltip { display: none; }
+
+  /* Simulation layout */
+  .sim-layout {
+    grid-template-columns: 1fr;
+  }
+  .sim-left {
+    padding: 1rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .sim-right {
+    padding: 1rem;
+  }
+
+  /* Auth pages */
+  .auth-container {
+    padding: 0 0.5rem;
+  }
+  .auth-card {
+    padding: 1.25rem;
+  }
+
+  /* User panel */
+  .user-panel-dropdown {
+    width: 240px;
+    right: -10px;
+  }
+
+  /* Risk meter */
+  .arena-risk-meter {
+    bottom: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .risk-track { width: 100px; }
+
+  /* Brand tooltip */
+  .brand-tooltip { display: none; }
+}

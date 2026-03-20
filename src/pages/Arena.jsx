@@ -125,6 +125,7 @@ function LevelNode({ level, config, onClick, isUnlocked, isCompleted, index }) {
         animationDelay: `${index * 0.15}s`
       }}
       onClick={() => isUnlocked && onClick(config.id)}
+      onTouchEnd={(e) => { e.preventDefault(); isUnlocked && onClick(config.id); }}
     >
       {/* Pulse ring */}
       {isUnlocked && !isCompleted && <div className="node-pulse-ring" />}

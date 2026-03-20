@@ -62,6 +62,7 @@ function TaskNode({ task, meta, config, position, index, onClick }) {
         animationDelay: `${index * 0.12}s`
       }}
       onClick={() => isAvailable && onClick(task.taskId)}
+      onTouchEnd={(e) => { e.preventDefault(); isAvailable && onClick(task.taskId); }}
     >
       {isAvailable && !isCompleted && <div className="task-pulse" />}
 
