@@ -138,7 +138,7 @@ export default function Simulation() {
   const fetchClaudeAnalysis = async (scenarioData) => {
     setClaudeLoading(true);
     try {
-      const response = await fetch('/api/claude-analysis', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/claude-analysis`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -188,7 +188,7 @@ export default function Simulation() {
       // Get Claude's detailed post-action explanation
       setClaudeLoading(true);
       try {
-        const claudeRes = await fetch('/api/claude-feedback', {
+        const claudeRes = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/claude-feedback`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
