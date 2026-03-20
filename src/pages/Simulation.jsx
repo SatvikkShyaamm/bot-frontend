@@ -136,6 +136,7 @@ export default function Simulation() {
 
   // Ask Claude for threat analysis AFTER the user sees the scenario
   const fetchClaudeAnalysis = async (scenarioData) => {
+    return;
     setClaudeLoading(true);
     try {
       const token = localStorage.getItem('bot_token');
@@ -163,10 +164,7 @@ export default function Simulation() {
   };
 
   useEffect(() => {
-    if (scenario && scenario.title) {
-      console.log('Fetching Claude analysis for:', scenario.title);
-      fetchClaudeAnalysis(scenario);
-    }
+    // Claude analysis available after action only
   }, [scenario]);
 
   const handleAction = async (actionId) => {
