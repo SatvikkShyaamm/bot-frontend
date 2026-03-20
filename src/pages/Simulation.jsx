@@ -138,9 +138,13 @@ export default function Simulation() {
   const fetchClaudeAnalysis = async (scenarioData) => {
     setClaudeLoading(true);
     try {
+      const token = localStorage.getItem('bot_token');
       const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/claude-analysis`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         credentials: 'include',
         body: JSON.stringify({
           scenarioTitle: scenarioData.title,
@@ -188,9 +192,13 @@ export default function Simulation() {
       // Get Claude's detailed post-action explanation
       setClaudeLoading(true);
       try {
+        const token = localStorage.getItem('bot_token');
         const claudeRes = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/claude-feedback`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
           credentials: 'include',
           body: JSON.stringify({
             scenarioTitle: scenario.title,
