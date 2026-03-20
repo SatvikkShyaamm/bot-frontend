@@ -104,6 +104,9 @@ export default function Simulation() {
   const { refreshUser } = useAuth();
   const navigate = useNavigate();
   const [scenario, setScenario] = useState(null);
+  const shuffleArray = (array) => {
+    return [...array].sort(() => Math.random() - 0.5);
+  };
   const [taskMeta, setTaskMeta] = useState(null);
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -124,7 +127,11 @@ export default function Simulation() {
       api.get('/progress')
     ])
       .then(([simRes, progRes]) => {
-        setScenario(simRes.data.scenario);
+        const scenarioData = simRes.data.scenario;
+        if (scenarioData?.available_actions) {
+          scenarioData.available_actions = shuffleArray(scenarioData.available_actions);
+        }
+        setScenario(scenarioData);
         setTaskMeta(simRes.data.taskMeta);
         setProgress(progRes.data.progress);
         setRiskMeter(progRes.data.progress.riskMeter ?? 0);
