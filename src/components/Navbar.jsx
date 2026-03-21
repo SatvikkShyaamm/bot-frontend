@@ -133,7 +133,6 @@ export default function Navbar({ progress }) {
               defensive professional. Face realistic attack simulations across Social
               Engineering, Phishing, AI Scams, and Malware attacks. Learn. Defend. Dominate.
             </div>
-            <div className="brand-tooltip-footer">SETS Gameathon 2026 · Team Rootshell</div>
           </div>
         )}
       </div>
