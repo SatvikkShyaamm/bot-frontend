@@ -30,6 +30,8 @@ export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: '', email: '', password: '', confirm: '' });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [globalError, setGlobalError] = useState('');
@@ -133,14 +135,23 @@ export default function Register() {
                 <label className="auth-label">
                   <span className="auth-label-prefix">&gt;</span> ACCESS KEY (Password)
                 </label>
+                <div className="password-wrapper">
                 <input
                   className={`cyber-input ${errors.password ? 'input-error' : ''}`}
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="Min 8 chars, upper + lower + number"
                   value={form.password}
                   onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
                   autoComplete="new-password"
                 />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(p => !p)}
+                >
+                  {showPassword ? '🙈' : '👁️'}
+                </button>
+              </div>
                 {errors.password && <div className="error-msg">⚠ {errors.password}</div>}
               </div>
 
@@ -148,14 +159,23 @@ export default function Register() {
                 <label className="auth-label">
                   <span className="auth-label-prefix">&gt;</span> CONFIRM ACCESS KEY
                 </label>
+                <div className="password-wrapper">
                 <input
                   className={`cyber-input ${errors.confirm ? 'input-error' : ''}`}
-                  type="password"
+                  type={showConfirm ? 'text' : 'password'}
                   placeholder="Repeat your password"
                   value={form.confirm}
                   onChange={e => setForm(p => ({ ...p, confirm: e.target.value }))}
                   autoComplete="new-password"
                 />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowConfirm(p => !p)}
+                >
+                  {showConfirm ? '🙈' : '👁️'}
+                </button>
+              </div>
                 {errors.confirm && <div className="error-msg">⚠ {errors.confirm}</div>}
               </div>
 

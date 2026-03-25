@@ -27,6 +27,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ identifier: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [step, setStep] = useState('idle');
 
@@ -106,14 +107,23 @@ export default function Login() {
                 <label className="auth-label">
                   <span className="auth-label-prefix">&gt;</span> ACCESS KEY
                 </label>
-                <input
-                  className="cyber-input"
-                  type="password"
-                  placeholder="••••••••"
-                  value={form.password}
-                  onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
-                  autoComplete="current-password"
-                />
+                <div className="password-wrapper">
+                  <input
+                    className="cyber-input"
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="••••••••"
+                    value={form.password}
+                    onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
+                    autoComplete="current-password"
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle"
+                    onClick={() => setShowPassword(p => !p)}
+                  >
+                    {showPassword ? '🙈' : '👁️'}
+                  </button>
+                </div>
               </div>
 
               {error && (
@@ -133,6 +143,9 @@ export default function Login() {
                 )}
               </button>
 
+              <div className="auth-switch">
+                <Link to="/forgot-password" className="auth-link">FORGOT PASSWORD?</Link>
+              </div>
               <div className="auth-switch">
                 No operative file?{' '}
                 <Link to="/register" className="auth-link">ENLIST NOW</Link>
